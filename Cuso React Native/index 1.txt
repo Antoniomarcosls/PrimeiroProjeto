@@ -1,0 +1,42 @@
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+
+class Janta extends Component{
+
+  constructor(pros){
+    super(pros);
+    this.state = {comida:pros.comida}
+    var comidas = ['Pizza', 'Lasanha', 'Buger', 'Sopa', 'Arroz']
+
+    setInterval(() => {
+      this.setState(previousState => {
+        var n = Math.floor(Math.random() * comidas.length)
+        return {comida: comidas[n]}
+      })
+    }, 1000)
+
+  }
+
+  render(){
+    return(
+      <View>
+        <Text style={{textAlign:'center', fontWeight:'bold', fontSize:20, color:'red'}}>Hoje você vai jantar:</Text>
+        <Text style={{textAlign:'center', fontSize:15}}>{this.state.comida}</Text>
+      </View>
+    )
+  }
+}
+
+export default class PrimeiroProjeto extends Component{
+
+  render(){
+
+      return(
+
+        <View style={{paddingTop:20}}>
+          <Janta comida='Chocolate'/>
+        </View>
+      );
+  }
+}
+
